@@ -4,11 +4,6 @@ import java.util.Scanner;
 
 public abstract class AbstractView {
 
-    String getStringInput() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
-    }
-
     public void displayPressAnyKeyToContinueMessage() {
         System.out.print("\nPress any key to continue.");
         Scanner scanner = new Scanner(System.in);
