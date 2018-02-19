@@ -39,7 +39,7 @@ public class DbBookDAO extends DbHelper implements BookDAO {
             ResultSet resultSet = query(statement);
             while (resultSet.next())
                 book = new Book(
-                        resultSet.getInt(BookEntry.ISBN),
+                        resultSet.getDouble(BookEntry.ISBN),
                         resultSet.getInt(BookEntry.author),
                         resultSet.getString(BookEntry.title),
                         resultSet.getString(BookEntry.publisher),
@@ -74,7 +74,7 @@ public class DbBookDAO extends DbHelper implements BookDAO {
             ResultSet resultSet = query(statement);
             while (resultSet.next())
                 books.add(new Book(
-                        resultSet.getInt(BookEntry.ISBN),
+                        resultSet.getDouble(BookEntry.ISBN),
                         resultSet.getInt(BookEntry.author),
                         resultSet.getString(BookEntry.title),
                         resultSet.getString(BookEntry.publisher),

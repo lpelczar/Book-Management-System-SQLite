@@ -2,7 +2,7 @@ package com.codecool.library.models;
 
 public class Book {
 
-    private int ISBN;
+    private double ISBN;
     private int author;
     private String title;
     private String publisher;
@@ -10,7 +10,7 @@ public class Book {
     private double price;
     private int type;
 
-    public Book(int ISBN, int author, String title, String publisher, int publication_year, double price, int type) {
+    public Book(double ISBN, int author, String title, String publisher, int publication_year, double price, int type) {
         this.ISBN = ISBN;
         this.author = author;
         this.title = title;
@@ -20,11 +20,11 @@ public class Book {
         this.type = type;
     }
 
-    public int getISBN() {
+    public double getISBN() {
         return ISBN;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(double ISBN) {
         this.ISBN = ISBN;
     }
 
@@ -74,5 +74,11 @@ public class Book {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ISBN: %.0f, Author: %d, Title %s, Publisher: %s, Year: %d, Price: %.2f, Type: %d",
+                ISBN, author, title, publisher, publication_year, price, type);
     }
 }
