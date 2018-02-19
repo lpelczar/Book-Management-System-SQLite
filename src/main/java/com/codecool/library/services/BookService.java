@@ -19,12 +19,12 @@ public class BookService {
             String title = bookView.getBookTitleInput();
             String publisher = bookView.getBookPublisherInput();
             int year = bookView.getBookPublicationYearInput();
-            int price = bookView.getBookPriceInput();
+            double price = bookView.getBookPriceInput();
             int type = bookView.getBookTypeInput();
             if (dbBookDAO.add(new Book(bookISBN, author, title, publisher, year, price, type))) {
-                bookView.displayQuestSuccessfullyAdded();
+                bookView.displayBookSuccessfullyAdded();
             } else {
-                bookView.displayErrorAddingQuest();
+                bookView.displayErrorAddingBook();
             }
         }
     }
