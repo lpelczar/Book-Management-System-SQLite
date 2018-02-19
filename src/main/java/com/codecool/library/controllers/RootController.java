@@ -31,7 +31,7 @@ public class RootController {
                     //bookService.showAllBooksSortedByName();
                     break;
                 case "6":
-                    //bookService.showAllBooksByGivenAuthor();
+                    bookService.showAllBooksByGivenAuthor();
                     break;
                 case "0":
                     isAppRunning = false;

@@ -29,4 +29,10 @@ public class BookStatement {
     public String selectAllBooks() {
         return "SELECT * FROM " + BookEntry.TABLE_NAME + ";" ;
     }
+
+    public String selectBooksByAuthor() {
+        return "SELECT * FROM " + BookEntry.TABLE_NAME +
+                " JOIN authors ON " +
+                BookEntry.TABLE_NAME + "." + BookEntry.author + " = authors.author_id WHERE authors.name = ?;" ;
+    }
 }

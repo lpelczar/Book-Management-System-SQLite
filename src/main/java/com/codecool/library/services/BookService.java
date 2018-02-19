@@ -53,4 +53,9 @@ public class BookService {
             bookView.displayThereIsNoBookMessage();
         }
     }
+
+    public void showAllBooksByGivenAuthor() {
+        String author = bookView.getAuthorInput();
+        bookView.displayEntries(new ArrayList<>(dbBookDAO.getByAuthor(author)));
+    }
 }

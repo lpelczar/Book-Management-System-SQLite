@@ -67,10 +67,21 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     @Override
     public List<Book> getAll() {
         String sqlStatement = bookStatement.selectAllBooks();
+        PreparedStatement statement = psc.getPreparedStatementBy(new ArrayList<>(),sqlStatement);
+        return getBooks(statement);
+    }
 
+    @Override
+    public List<Book> getByAuthor(String author) {
+        String sqlStatement = bookStatement.selectBooksByAuthor();
+        List<Object> params = Collections.singletonList(author);
+        PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
+        return getBooks(statement);
+    }
+
+    private List<Book> getBooks(PreparedStatement statement) {
         List<Book> books = new ArrayList<>();
         try {
-            PreparedStatement statement = getPreparedStatement(sqlStatement);
             ResultSet resultSet = query(statement);
             while (resultSet.next())
                 books.add(new Book(

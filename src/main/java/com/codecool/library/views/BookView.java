@@ -65,4 +65,8 @@ public class BookView extends AbstractView {
         System.out.println("There is no book with this ISBN number!");
         displayPressAnyKeyToContinueMessage();
     }
+
+    public String getAuthorInput() {
+        return InputGetter.getStringInputFromConsole("Enter author: ");
+    }
 }
