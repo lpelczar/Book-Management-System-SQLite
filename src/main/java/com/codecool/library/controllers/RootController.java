@@ -25,7 +25,7 @@ public class RootController {
                     bookService.deleteBook();
                     break;
                 case "4":
-                    //bookService.searchBook();
+                    bookService.searchBook();
                     break;
                 case "5":
                     bookService.showAllBooksSortedByName();

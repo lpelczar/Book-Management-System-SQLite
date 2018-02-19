@@ -10,5 +10,6 @@ public interface BookDAO {
     boolean update(Book book);
     List<Book> getAll();
     List<Book> getByAuthor(String author);
+    List<Book> getBySearchPhrase(String searchPhrase);
     Book getByISBN(double ISBN);
 }

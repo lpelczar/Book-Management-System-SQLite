@@ -131,4 +131,9 @@ public class BookService {
             bookView.displayErrorChangingTheValue();
         }
     }
+
+    public void searchBook() {
+        String searchPhrase = bookView.getSearchPhrase();
+        bookView.displayEntries(new ArrayList<>(dbBookDAO.getBySearchPhrase(searchPhrase)));
+    }
 }

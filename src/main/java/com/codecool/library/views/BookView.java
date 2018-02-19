@@ -111,4 +111,8 @@ public class BookView extends AbstractView {
     public int askForTypeInput() {
         return InputGetter.getIntInputFromConsole("Enter new type: ");
     }
+
+    public String getSearchPhrase() {
+        return InputGetter.getStringInputFromConsole("Enter search phrase: ");
+    }
 }

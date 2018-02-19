@@ -88,6 +88,13 @@ public class DbBookDAO extends DbHelper implements BookDAO {
         return getBooks(statement);
     }
 
+    @Override
+    public List<Book> getBySearchPhrase(String searchPhrase) {
+        String sqlStatement = bookStatement.selectBooksBySearchPhrase(searchPhrase);
+        PreparedStatement statement = psc.getPreparedStatementBy(new ArrayList<>(), sqlStatement);
+        return getBooks(statement);
+    }
+
     private List<Book> getBooks(PreparedStatement statement) {
         List<Book> books = new ArrayList<>();
         try {
