@@ -28,7 +28,7 @@ public class RootController {
                     //bookService.searchBook();
                     break;
                 case "5":
-                    //bookService.showAllBooksSortedByName();
+                    bookService.showAllBooksSortedByName();
                     break;
                 case "6":
                     bookService.showAllBooksByGivenAuthor();

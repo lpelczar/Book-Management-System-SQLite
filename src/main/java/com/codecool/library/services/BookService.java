@@ -6,9 +6,7 @@ import com.codecool.library.models.Book;
 import com.codecool.library.views.BookView;
 
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class BookService {
 
@@ -57,5 +55,13 @@ public class BookService {
     public void showAllBooksByGivenAuthor() {
         String author = bookView.getAuthorInput();
         bookView.displayEntries(new ArrayList<>(dbBookDAO.getByAuthor(author)));
+    }
+
+    public void showAllBooksSortedByName() {
+        List<Book> books = new ArrayList<>(dbBookDAO.getAll());
+        books.sort(Comparator.comparing(Book::getTitle));
+        List<Object> entries = new ArrayList<>();
+        entries.addAll(books);
+        bookView.displayEntries(entries);
     }
 }
