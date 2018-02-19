@@ -67,8 +67,8 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     @Override
     public boolean update(Book book) {
         String sqlStatement = bookStatement.updateBookStatement();
-        List<Object> params = Arrays.asList(book.getAuthor(), book.getTitle(),
-                book.getPublisher(), book.getPublication_year(), book.getPrice(), book.getType());
+        List<Object> params = Arrays.asList(book.getAuthor(), book.getTitle(), book.getPublisher(),
+                book.getPublication_year(), book.getPrice(), book.getType(), book.getISBN());
         PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
         return update(statement);
     }
