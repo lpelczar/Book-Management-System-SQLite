@@ -20,4 +20,13 @@ public class BookStatement {
         return "SELECT * FROM " + BookEntry.TABLE_NAME +
                 " WHERE " + BookEntry.ISBN + " = ?;" ;
     }
+
+    public String deleteBookStatement() {
+        return "DELETE FROM " + BookEntry.TABLE_NAME +
+                " WHERE " + BookEntry.ISBN + " = ?;" ;
+    }
+
+    public String selectAllBooks() {
+        return "SELECT * FROM " + BookEntry.TABLE_NAME + ";" ;
+    }
 }

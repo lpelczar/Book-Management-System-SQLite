@@ -10,7 +10,9 @@ import com.codecool.library.utils.QueryLogger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DbBookDAO extends DbHelper implements BookDAO {
@@ -53,4 +55,41 @@ public class DbBookDAO extends DbHelper implements BookDAO {
         }
         return book;
     }
+
+    @Override
+    public boolean delete(Book book) {
+        String sqlStatement = bookStatement.deleteBookStatement();
+        List<Object> params = Collections.singletonList(book.getISBN());
+        PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
+        return update(statement);
+    }
+
+    @Override
+    public List<Book> getAll() {
+        String sqlStatement = bookStatement.selectAllBooks();
+
+        List<Book> books = new ArrayList<>();
+        try {
+            PreparedStatement statement = getPreparedStatement(sqlStatement);
+            ResultSet resultSet = query(statement);
+            while (resultSet.next())
+                books.add(new Book(
+                        resultSet.getInt(BookEntry.ISBN),
+                        resultSet.getInt(BookEntry.author),
+                        resultSet.getString(BookEntry.title),
+                        resultSet.getString(BookEntry.publisher),
+                        resultSet.getInt(BookEntry.publication_year),
+                        resultSet.getDouble(BookEntry.price),
+                        resultSet.getInt(BookEntry.type)));
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            QueryLogger.logInfo(e.getClass().getName() + ": " + e.getMessage(), "logs/errors.log");
+        } finally {
+            closeConnection();
+        }
+        return books;
+    }
+
+
 }

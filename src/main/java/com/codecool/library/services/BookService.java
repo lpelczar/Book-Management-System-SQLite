@@ -5,6 +5,11 @@ import com.codecool.library.dao.DbBookDAO;
 import com.codecool.library.models.Book;
 import com.codecool.library.views.BookView;
 
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class BookService {
 
     private BookDAO dbBookDAO = new DbBookDAO();
@@ -26,6 +31,26 @@ public class BookService {
             } else {
                 bookView.displayErrorAddingBook();
             }
+        }
+    }
+
+    public void deleteBook() {
+
+        bookView.displayEntriesNoInput(new ArrayList<>(dbBookDAO.getAll()));
+        if (dbBookDAO.getAll().isEmpty()) {
+            bookView.displayPressAnyKeyToContinueMessage();
+            return;
+        }
+
+        int bookISBN = bookView.getBookISBNInput();
+        if (dbBookDAO.getByISBN(bookISBN) != null) {
+            if (dbBookDAO.delete(dbBookDAO.getByISBN(bookISBN))) {
+                bookView.displayBookDeletedMessage();
+            } else {
+                bookView.displayDeleteErrorMessage();
+            }
+        } else {
+            bookView.displayThereIsNoBookMessage();
         }
     }
 }

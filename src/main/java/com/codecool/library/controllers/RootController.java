@@ -19,19 +19,19 @@ public class RootController {
                     bookService.addNewBook();
                     break;
                 case "2":
-                    bookService.editBook();
+                    //bookService.editBook();
                     break;
                 case "3":
                     bookService.deleteBook();
                     break;
                 case "4":
-                    bookService.searchBook();
+                    //bookService.searchBook();
                     break;
                 case "5":
-                    bookService.showAllBooksSortedByName();
+                    //bookService.showAllBooksSortedByName();
                     break;
                 case "6":
-                    bookService.showAllBooksByGivenAuthor();
+                    //bookService.showAllBooksByGivenAuthor();
                     break;
                 case "0":
                     isAppRunning = false;

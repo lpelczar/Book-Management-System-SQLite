@@ -50,4 +50,19 @@ public class BookView extends AbstractView {
         System.out.println("Error adding book!");
         displayPressAnyKeyToContinueMessage();
     }
+
+    public void displayBookDeletedMessage() {
+        System.out.println("Book successfully deleted!");
+        displayPressAnyKeyToContinueMessage();
+    }
+
+    public void displayDeleteErrorMessage() {
+        System.out.println("Error deleting book!");
+        displayPressAnyKeyToContinueMessage();
+    }
+
+    public void displayThereIsNoBookMessage() {
+        System.out.println("There is no book with this ISBN number!");
+        displayPressAnyKeyToContinueMessage();
+    }
 }
