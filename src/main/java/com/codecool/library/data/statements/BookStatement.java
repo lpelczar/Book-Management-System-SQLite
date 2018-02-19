@@ -1,7 +1,6 @@
 package com.codecool.library.data.statements;
 
 import com.codecool.library.data.contracts.BookEntry;
-import com.codecool.library.models.Book;
 
 public class BookStatement {
 

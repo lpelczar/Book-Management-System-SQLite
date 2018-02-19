@@ -24,10 +24,6 @@ public class Book {
         return ISBN;
     }
 
-    public void setISBN(double ISBN) {
-        this.ISBN = ISBN;
-    }
-
     public int getAuthor() {
         return author;
     }
