@@ -19,7 +19,7 @@ public class RootController {
                     bookService.addNewBook();
                     break;
                 case "2":
-                    //bookService.editBook();
+                    bookService.editBook();
                     break;
                 case "3":
                     bookService.deleteBook();

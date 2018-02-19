@@ -64,4 +64,71 @@ public class BookService {
         entries.addAll(books);
         bookView.displayEntries(entries);
     }
+
+    public void editBook() {
+        bookView.displayEntriesNoInput(new ArrayList<>(dbBookDAO.getAll()));
+        if (dbBookDAO.getAll().isEmpty()) {
+            bookView.displayPressAnyKeyToContinueMessage();
+            return;
+        }
+
+        double bookISBN = bookView.getBookISBNInput();
+        if (dbBookDAO.getByISBN(bookISBN) != null) {
+            updateBook(dbBookDAO.getByISBN(bookISBN));
+        } else {
+            bookView.displayThereIsNoBookMessage();
+        }
+    }
+
+    private void updateBook(Book book) {
+        final String UPDATE_AUTHOR = "1";
+        final String UPDATE_TITLE = "2";
+        final String UPDATE_PUBLISHER = "3";
+        final String UPDATE_YEAR = "4";
+        final String UPDATE_PRICE = "5";
+        final String UPDATE_TYPE = "6";
+
+        switch(bookView.getValueToUpdate(book)) {
+            case UPDATE_AUTHOR:
+                int author = bookView.askForNewAuthor();
+                book.setAuthor(author);
+                showEditResultMessage(dbBookDAO.update(book));
+                break;
+            case UPDATE_TITLE:
+                String title = bookView.askForTitleInput();
+                book.setTitle(title);
+                showEditResultMessage(dbBookDAO.update(book));
+                break;
+            case UPDATE_PUBLISHER:
+                String publisher = bookView.askForPublisherInput();
+                book.setPublisher(publisher);
+                showEditResultMessage(dbBookDAO.update(book));
+                break;
+            case UPDATE_YEAR:
+                int year = bookView.askForYearInput();
+                book.setPublication_year(year);
+                showEditResultMessage(dbBookDAO.update(book));
+                break;
+            case UPDATE_PRICE:
+                double price = bookView.askForPriceInput();
+                book.setPrice(price);
+                showEditResultMessage(dbBookDAO.update(book));
+                break;
+            case UPDATE_TYPE:
+                int type = bookView.askForTypeInput();
+                book.setPrice(type);
+                showEditResultMessage(dbBookDAO.update(book));
+                break;
+            default:
+                bookView.displayWrongOptionMessage();
+        }
+    }
+
+    private void showEditResultMessage(boolean isEdit) {
+        if (isEdit) {
+            bookView.displayValueHasBeenChanged();
+        } else {
+            bookView.displayErrorChangingTheValue();
+        }
+    }
 }

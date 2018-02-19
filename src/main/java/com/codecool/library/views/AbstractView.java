@@ -37,4 +37,14 @@ public abstract class AbstractView {
             System.out.println("List is empty!");
         }
     }
+
+    public void displayErrorChangingTheValue() {
+        System.out.println("Error changing the value!");
+        displayPressAnyKeyToContinueMessage();
+    }
+
+    public void displayValueHasBeenChanged() {
+        System.out.println("Value has been changed!");
+        displayPressAnyKeyToContinueMessage();
+    }
 }

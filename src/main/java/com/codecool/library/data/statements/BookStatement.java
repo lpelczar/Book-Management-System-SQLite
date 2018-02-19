@@ -35,4 +35,14 @@ public class BookStatement {
                 " JOIN authors ON " +
                 BookEntry.TABLE_NAME + "." + BookEntry.author + " = authors.author_id WHERE authors.name = ?;" ;
     }
+
+    public String updateBookStatement() {
+        return "UPDATE " + BookEntry.TABLE_NAME + " SET " +
+                BookEntry.author + " = ?," +
+                BookEntry.title + " = ?," +
+                BookEntry.publisher + " = ?," +
+                BookEntry.publication_year + " = ?," +
+                BookEntry.price + " = ?," +
+                BookEntry.type + " = ? WHERE " + BookEntry.ISBN + " = ?;";
+    }
 }
