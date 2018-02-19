@@ -9,5 +9,5 @@ public interface BookDAO {
     boolean delete(Book book);
     List<Book> getAll();
     List<Book> getByAuthor(String author);
-    Book getByISBN(int ISBN);
+    Book getByISBN(double ISBN);
 }

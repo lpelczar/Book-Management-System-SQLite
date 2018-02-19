@@ -14,7 +14,7 @@ public class BookService {
     private BookView bookView = new BookView();
 
     public void addNewBook() {
-        int bookISBN = bookView.getBookISBNInput();
+        double bookISBN = bookView.getBookISBNInput();
         if (dbBookDAO.getByISBN(bookISBN) != null) {
             bookView.displayBookAlreadyExists();
         } else {
@@ -40,7 +40,7 @@ public class BookService {
             return;
         }
 
-        int bookISBN = bookView.getBookISBNInput();
+        double bookISBN = bookView.getBookISBNInput();
         if (dbBookDAO.getByISBN(bookISBN) != null) {
             if (dbBookDAO.delete(dbBookDAO.getByISBN(bookISBN))) {
                 bookView.displayBookDeletedMessage();

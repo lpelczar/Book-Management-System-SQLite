@@ -30,12 +30,12 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     }
 
     @Override
-    public Book getByISBN(int ISBN) {
+    public Book getByISBN(double ISBN) {
         String sqlStatement = bookStatement.selectBookByISBN();
         Book book = null;
         try {
             PreparedStatement statement = getPreparedStatement(sqlStatement);
-            statement.setInt(1, ISBN);
+            statement.setDouble(1, ISBN);
             ResultSet resultSet = query(statement);
             while (resultSet.next())
                 book = new Book(
