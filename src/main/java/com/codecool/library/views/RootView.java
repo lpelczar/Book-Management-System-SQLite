@@ -1,5 +1,7 @@
 package com.codecool.library.views;
 
+import com.codecool.library.utils.InputGetter;
+
 public class RootView extends AbstractView {
 
     public void displayMenu() {
@@ -17,5 +19,9 @@ public class RootView extends AbstractView {
 
     public void displayWrongInputMessage() {
         System.out.println("Wrong input!");
+    }
+
+    public String getUserInput() {
+        return InputGetter.getStringInputFromConsole("Choose option: ");
     }
 }
