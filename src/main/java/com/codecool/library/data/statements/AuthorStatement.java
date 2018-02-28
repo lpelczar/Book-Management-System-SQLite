@@ -8,4 +8,8 @@ public class AuthorStatement {
         return "SELECT * FROM " + AuthorEntry.TABLE_NAME +
                 " WHERE " + AuthorEntry.author_id + " = ?;" ;
     }
+
+    public String selectAllAuthors() {
+        return "SELECT * FROM " + AuthorEntry.TABLE_NAME + ";" ;
+    }
 }
