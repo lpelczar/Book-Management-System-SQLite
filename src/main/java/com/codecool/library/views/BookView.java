@@ -15,20 +15,9 @@ public class BookView extends AbstractView {
         displayPressAnyKeyToContinueMessage();
     }
 
-    public int getBookAuthorInput() {
-        return InputGetter.getIntInputFromConsole("Enter author: ");
-    }
-
-
     public String getBookTitleInput() {
         return InputGetter.getStringInputFromConsole("Enter title: ");
     }
-
-
-    public String getBookPublisherInput() {
-        return InputGetter.getStringInputFromConsole("Enter publisher: ");
-    }
-
 
     public int getBookPublicationYearInput() {
         return InputGetter.getIntInputFromConsole("Enter publication year: ");
@@ -36,10 +25,6 @@ public class BookView extends AbstractView {
 
     public double getBookPriceInput() {
         return InputGetter.getDoubleInputFromConsole("Enter price: ");
-    }
-
-    public int getBookTypeInput() {
-        return InputGetter.getIntInputFromConsole("Enter book type: ");
     }
 
     public void displayBookSuccessfullyAdded() {
