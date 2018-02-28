@@ -2,15 +2,16 @@ package com.codecool.library.models;
 
 public class Book {
 
-    private double ISBN;
-    private int author;
+    private long ISBN;
+    private Author author;
     private String title;
-    private String publisher;
+    private Publisher publisher;
     private int publication_year;
     private double price;
-    private int type;
+    private BookType type;
 
-    public Book(double ISBN, int author, String title, String publisher, int publication_year, double price, int type) {
+    public Book(long ISBN, Author author, String title, Publisher publisher,
+                int publication_year, double price, BookType type) {
         this.ISBN = ISBN;
         this.author = author;
         this.title = title;
@@ -20,15 +21,19 @@ public class Book {
         this.type = type;
     }
 
-    public double getISBN() {
+    public long getISBN() {
         return ISBN;
     }
 
-    public int getAuthor() {
+    public void setISBN(long ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(int author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
@@ -40,11 +45,11 @@ public class Book {
         this.title = title;
     }
 
-    public String getPublisher() {
+    public Publisher getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
+    public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
 
@@ -64,17 +69,17 @@ public class Book {
         this.price = price;
     }
 
-    public int getType() {
+    public BookType getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(BookType type) {
         this.type = type;
     }
 
     @Override
     public String toString() {
-        return String.format("ISBN: %.0f, Author: %d, Title: %s, Publisher: %s, Year: %d, Price: %.2f, Type: %d",
+        return String.format("ISBN: %.0f, Author: %s, Title: %s, Publisher: %s, Year: %d, Price: %.2f, Type: %s",
                 ISBN, author, title, publisher, publication_year, price, type);
     }
 }
