@@ -6,7 +6,6 @@ import com.codecool.library.data.contracts.BookEntry;
 import com.codecool.library.data.statements.BookStatement;
 import com.codecool.library.models.Author;
 import com.codecool.library.models.Book;
-import com.codecool.library.models.Publisher;
 import com.codecool.library.utils.QueryLogger;
 
 import java.sql.PreparedStatement;
@@ -35,8 +34,8 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     public boolean add(Book book) {
         String sqlStatement = bookStatement.insertBookStatement();
         List params = Arrays.asList(book.getISBN(), book.getAuthor().getId(), book.getTitle(),
-                book.getPublisher().getPublisher_id(), book.getPublication_year(),
-                book.getPrice(), book.getType().getType_id());
+                book.getPublisher().getPublisherId(), book.getPublicationYear(),
+                book.getPrice(), book.getType().getTypeId());
         PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
         return update(statement);
     }
@@ -53,8 +52,8 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     public boolean update(Book book) {
         String sqlStatement = bookStatement.updateBookStatement();
         List params = Arrays.asList(book.getAuthor().getId(), book.getTitle(),
-                book.getPublisher().getPublisher_id(), book.getPublication_year(),
-                book.getPrice(), book.getType().getType_id(), book.getISBN());
+                book.getPublisher().getPublisherId(), book.getPublicationYear(),
+                book.getPrice(), book.getType().getTypeId(), book.getISBN());
         PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
         return update(statement);
     }

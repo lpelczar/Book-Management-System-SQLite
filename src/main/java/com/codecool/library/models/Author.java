@@ -42,11 +42,11 @@ public class Author {
         this.surname = surname;
     }
 
-    public int getBirth_year() {
+    public int getBirthYear() {
         return birth_year;
     }
 
-    public void setBirth_year(int birth_year) {
+    public void setBirthYear(int birth_year) {
         this.birth_year = birth_year;
     }
 

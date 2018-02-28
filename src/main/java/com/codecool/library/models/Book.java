@@ -53,11 +53,11 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public int getPublication_year() {
+    public int getPublicationYear() {
         return publication_year;
     }
 
-    public void setPublication_year(int publication_year) {
+    public void setPublicationYear(int publication_year) {
         this.publication_year = publication_year;
     }
 

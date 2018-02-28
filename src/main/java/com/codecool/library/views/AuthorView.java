@@ -14,7 +14,7 @@ public class AuthorView extends AbstractView {
 
     public void displayFullNameAndAge(Author author) {
         int currentYear = LocalDate.now().getYear();
-        int age = currentYear - author.getBirth_year();
+        int age = currentYear - author.getBirthYear();
         System.out.println("Full name: " + author.getName() + " " + author.getSurname() + " Age: " + age);
         displayPressAnyKeyToContinueMessage();
     }

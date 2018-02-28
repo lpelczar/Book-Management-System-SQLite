@@ -10,11 +10,11 @@ public class BookType {
         this.type = type;
     }
 
-    public int getType_id() {
+    public int getTypeId() {
         return type_id;
     }
 
-    public void setType_id(int type_id) {
+    public void setTypeId(int type_id) {
         this.type_id = type_id;
     }
 

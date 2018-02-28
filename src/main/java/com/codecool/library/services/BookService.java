@@ -119,7 +119,7 @@ public class BookService {
                 break;
             case UPDATE_YEAR:
                 int year = bookView.askForYearInput();
-                book.setPublication_year(year);
+                book.setPublicationYear(year);
                 showEditResultMessage(bookDAO.update(book));
                 break;
             case UPDATE_PRICE:
@@ -164,7 +164,7 @@ public class BookService {
         List<Book> books = bookDAO.getAll();
         int year = LocalDate.now().getYear() - 10;
         List<Book> lastTenYearsBooks = books.stream()
-                .filter(x -> x.getPublication_year() > year)
+                .filter(x -> x.getPublicationYear() > year)
                 .collect(Collectors.toCollection(ArrayList::new));
         bookView.displayEntries(lastTenYearsBooks);
     }

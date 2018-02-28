@@ -14,11 +14,11 @@ public class Publisher {
         this.country = country;
     }
 
-    public String getPublisher_id() {
+    public String getPublisherId() {
         return publisher_id;
     }
 
-    public void setPublisher_id(String publisher_id) {
+    public void setPublisherId(String publisher_id) {
         this.publisher_id = publisher_id;
     }
 
