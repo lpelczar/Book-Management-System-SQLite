@@ -43,7 +43,7 @@ public class DbHelper {
         return statement.executeQuery();
     }
 
-    public boolean update(PreparedStatement statement) {
+    protected boolean update(PreparedStatement statement) {
 
         try {
             openConnection();

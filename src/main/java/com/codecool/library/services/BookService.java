@@ -65,9 +65,7 @@ public class BookService {
     public void showAllBooksSortedByName() {
         List<Book> books = new ArrayList<>(dbBookDAO.getAll());
         books.sort(Comparator.comparing(Book::getTitle));
-        List<Object> entries = new ArrayList<>();
-        entries.addAll(books);
-        bookView.displayEntries(entries);
+        bookView.displayEntries(books);
     }
 
     public void editBook() {

@@ -16,16 +16,16 @@ public abstract class AbstractView {
         System.out.flush();
     }
 
-    public void displayEntries(List<Object> entries) {
+    public void displayEntries(List entries) {
         showAllEntries(entries);
         displayPressAnyKeyToContinueMessage();
     }
 
-    public void displayEntriesNoInput(List<Object> entries) {
+    public void displayEntriesNoInput(List entries) {
         showAllEntries(entries);
     }
 
-    private void showAllEntries(List<Object> entries) {
+    private void showAllEntries(List entries) {
         System.out.println("");
         if(!entries.isEmpty()) {
             int index = 1;
