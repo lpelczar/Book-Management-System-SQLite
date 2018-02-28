@@ -6,8 +6,8 @@ import com.codecool.library.utils.InputGetter;
 public class BookView extends AbstractView {
 
 
-    public double getBookISBNInput() {
-        return InputGetter.getDoubleInputFromConsole("Enter book ISBN: ");
+    public long getBookISBNInput() {
+        return InputGetter.getLongInputFromConsole("Enter book ISBN: ");
     }
 
     public void displayBookAlreadyExists() {
