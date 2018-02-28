@@ -7,7 +7,9 @@ import com.codecool.library.models.BookType;
 import com.codecool.library.models.Publisher;
 import com.codecool.library.views.BookView;
 
+import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BookService {
 
@@ -156,5 +158,14 @@ public class BookService {
             authorsBooks.put(author, books.size());
         }
         bookView.displayAuthorsAndTheirBooksQuantity(authorsBooks);
+    }
+
+    public void showAllBooksWrittenInTheLastTenYears() {
+        List<Book> books = bookDAO.getAll();
+        int year = LocalDate.now().getYear() - 10;
+        List<Book> lastTenYearsBooks = books.stream()
+                .filter(x -> x.getPublication_year() > year)
+                .collect(Collectors.toCollection(ArrayList::new));
+        bookView.displayEntries(lastTenYearsBooks);
     }
 }
