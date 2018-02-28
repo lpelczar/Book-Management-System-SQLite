@@ -65,4 +65,10 @@ public class Author {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %d, Name: %s, Surname: %s, Birth: %d, City: %s, Country: %s",
+                id, name, surname, birth_year, city, country);
+    }
 }

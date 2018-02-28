@@ -4,13 +4,13 @@ public class Publisher {
 
     private String publisher_id;
     private String name;
-    private String text;
+    private String city;
     private String country;
 
-    public Publisher(String publisher_id, String name, String text, String country) {
+    public Publisher(String publisher_id, String name, String city, String country) {
         this.publisher_id = publisher_id;
         this.name = name;
-        this.text = text;
+        this.city = city;
         this.country = country;
     }
 
@@ -30,12 +30,12 @@ public class Publisher {
         this.name = name;
     }
 
-    public String getText() {
-        return text;
+    public String getCity() {
+        return city;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getCountry() {
@@ -44,5 +44,11 @@ public class Publisher {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %s, Name: %s, City: %s, Country: %s",
+                publisher_id, name, city, country);
     }
 }
