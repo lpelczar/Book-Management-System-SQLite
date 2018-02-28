@@ -1,11 +1,11 @@
 package com.codecool.library.data.statements;
 
-import com.codecool.library.data.contracts.BookEntry;
+import com.codecool.library.data.contracts.AuthorEntry;
 
 public class AuthorStatement {
 
     public String selectAuthorById() {
-        return "SELECT * FROM " + BookEntry.TABLE_NAME +
-                " WHERE " + BookEntry.ISBN + " = ?;" ;
+        return "SELECT * FROM " + AuthorEntry.TABLE_NAME +
+                " WHERE " + AuthorEntry.author_id + " = ?;" ;
     }
 }

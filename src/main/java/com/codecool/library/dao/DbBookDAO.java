@@ -21,9 +21,13 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     private BookStatement bookStatement = new BookStatement();
     private PreparedStatementCreator psc = new PreparedStatementCreator();
     private AuthorDAO authorDAO;
+    private PublisherDAO publisherDAO;
+    private BookTypeDAO bookTypeDAO;
 
-    public DbBookDAO(AuthorDAO authorDAO) {
+    public DbBookDAO(AuthorDAO authorDAO, PublisherDAO publisherDAO, BookTypeDAO bookTypeDAO) {
         this.authorDAO = authorDAO;
+        this.publisherDAO = publisherDAO;
+        this.bookTypeDAO = bookTypeDAO;
     }
 
     @Override
