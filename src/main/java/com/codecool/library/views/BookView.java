@@ -111,4 +111,8 @@ public class BookView extends AbstractView {
             System.out.println(pair.getKey() + ", Books quantity: " + pair.getValue());
         }
     }
+
+    public void displayBook(Book book) {
+        System.out.println(book);
+    }
 }

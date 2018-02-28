@@ -168,4 +168,15 @@ public class BookService {
                 .collect(Collectors.toCollection(ArrayList::new));
         bookView.displayEntries(lastTenYearsBooks);
     }
+
+    public void showMostExpensiveBook() {
+        List<Book> books = bookDAO.getAll();
+        Book book = books.stream().max(Comparator.comparing(Book::getPrice)).get();
+        bookView.displayBook(book);
+    }
+
+    public void showAuthorFullNameAndAge() {
+        Author author = authorService.getAuthor();
+        authorService.displayAuthorFullNameAndAge(author);
+    }
 }

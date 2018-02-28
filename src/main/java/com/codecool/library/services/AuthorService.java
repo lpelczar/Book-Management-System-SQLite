@@ -29,4 +29,8 @@ public class AuthorService {
     public List<Author> getAllAuthors() {
         return authorDAO.getAll();
     }
+
+    public void displayAuthorFullNameAndAge(Author author) {
+        authorView.displayFullNameAndAge(author);
+    }
 }

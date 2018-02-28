@@ -40,8 +40,16 @@ public class RootController {
                     break;
                 case "7":
                     bookService.showHowManyBooksEachAuthorHasCreated();
+                    break;
                 case "8":
                     bookService.showAllBooksWrittenInTheLastTenYears();
+                    break;
+                case "9":
+                    bookService.showMostExpensiveBook();
+                    break;
+                case "10":
+                    bookService.showAuthorFullNameAndAge();
+                    break;
                 case "0":
                     isAppRunning = false;
                     break;
