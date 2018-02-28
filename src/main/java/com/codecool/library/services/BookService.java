@@ -1,7 +1,10 @@
 package com.codecool.library.services;
 
 import com.codecool.library.dao.BookDAO;
+import com.codecool.library.models.Author;
 import com.codecool.library.models.Book;
+import com.codecool.library.models.BookType;
+import com.codecool.library.models.Publisher;
 import com.codecool.library.views.BookView;
 
 import java.util.*;
@@ -10,10 +13,17 @@ public class BookService {
 
     private BookDAO bookDAO;
     private BookView bookView;
+    private AuthorService authorService;
+    private PublisherService publisherService;
+    private BookTypeService bookTypeService;
 
-    public BookService (BookDAO bookDAO, BookView bookView) {
+    public BookService(BookDAO bookDAO, BookView bookView, AuthorService authorService,
+                       PublisherService publisherService, BookTypeService bookTypeService) {
         this.bookDAO = bookDAO;
         this.bookView = bookView;
+        this.authorService = authorService;
+        this.publisherService = publisherService;
+        this.bookTypeService = bookTypeService;
     }
 
     public void addNewBook() {
@@ -21,12 +31,12 @@ public class BookService {
         if (bookDAO.getByISBN(bookISBN) != null) {
             bookView.displayBookAlreadyExists();
         } else {
-            int author = bookView.getBookAuthorInput();
+            Author author = authorService.getAuthor();
             String title = bookView.getBookTitleInput();
-            String publisher = bookView.getBookPublisherInput();
+            Publisher publisher = publisherService.getPublisher();
             int year = bookView.getBookPublicationYearInput();
             double price = bookView.getBookPriceInput();
-            int type = bookView.getBookTypeInput();
+            BookType type = bookTypeService.getBookType();
             if (bookDAO.add(new Book(bookISBN, author, title, publisher, year, price, type))) {
                 bookView.displayBookSuccessfullyAdded();
             } else {
