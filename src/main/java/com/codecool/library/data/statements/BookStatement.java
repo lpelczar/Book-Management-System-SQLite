@@ -46,16 +46,16 @@ public class BookStatement {
                 BookEntry.type + " = ? WHERE " + BookEntry.ISBN + " = ?;";
     }
 
-    public String selectBooksBySearchPhrase(String searchPhrase) {
+    public String selectBooksBySearchPhrase() {
         return "SELECT * FROM " + BookEntry.TABLE_NAME +
                 " WHERE " +
-                BookEntry.ISBN + " LIKE '%" + searchPhrase + "%' OR " +
-                BookEntry.author + " LIKE '%" + searchPhrase + "%' OR " +
-                BookEntry.title + " LIKE '%" + searchPhrase + "%' OR " +
-                BookEntry.publisher + " LIKE '%" + searchPhrase + "%' OR " +
-                BookEntry.publication_year + " LIKE '%" + searchPhrase + "%' OR " +
-                BookEntry.price + " LIKE '%" + searchPhrase + "%' OR " +
-                BookEntry.type + " LIKE '%" + searchPhrase + "%' " +
+                BookEntry.ISBN + " LIKE ? OR " +
+                BookEntry.author + " LIKE ? OR " +
+                BookEntry.title + " LIKE ? OR " +
+                BookEntry.publisher + " LIKE ? OR " +
+                BookEntry.publication_year + " LIKE ? OR " +
+                BookEntry.price + " LIKE ? OR " +
+                BookEntry.type + " LIKE ? " +
                 ";" ;
     }
 }
