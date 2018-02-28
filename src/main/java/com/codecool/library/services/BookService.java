@@ -10,8 +10,13 @@ import java.util.*;
 
 public class BookService {
 
-    private BookDAO dbBookDAO = new DbBookDAO();
-    private BookView bookView = new BookView();
+    private BookDAO dbBookDAO;
+    private BookView bookView;
+
+    public BookService (BookDAO bookDAO, BookView bookView) {
+        this.dbBookDAO = bookDAO;
+        this.bookView = bookView;
+    }
 
     public void addNewBook() {
         double bookISBN = bookView.getBookISBNInput();

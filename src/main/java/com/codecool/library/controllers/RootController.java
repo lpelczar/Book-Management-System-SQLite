@@ -5,8 +5,13 @@ import com.codecool.library.views.RootView;
 
 public class RootController {
 
-    private RootView rootView = new RootView();
-    private BookService bookService = new BookService();
+    private RootView rootView;
+    private BookService bookService;
+
+    public RootController(RootView rootView, BookService bookService) {
+        this.rootView = rootView;
+        this.bookService = bookService;
+    }
 
     public void start() {
         boolean isAppRunning = true;
