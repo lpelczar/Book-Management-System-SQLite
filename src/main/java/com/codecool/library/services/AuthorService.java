@@ -5,6 +5,7 @@ import com.codecool.library.models.Author;
 import com.codecool.library.views.AuthorView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AuthorService {
 
@@ -23,5 +24,9 @@ public class AuthorService {
             id = authorView.getAuthorIdInput();
         } while (authorDAO.getById(id) == null);
         return authorDAO.getById(id);
+    }
+
+    public List<Author> getAllAuthors() {
+        return authorDAO.getAll();
     }
 }

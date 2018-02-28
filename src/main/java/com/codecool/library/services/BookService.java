@@ -147,4 +147,14 @@ public class BookService {
         String searchPhrase = bookView.getSearchPhrase();
         bookView.displayEntries(new ArrayList<>(bookDAO.getBySearchPhrase(searchPhrase)));
     }
+
+    public void showHowManyBooksEachAuthorHasCreated() {
+        Map<Author, Integer> authorsBooks = new HashMap<>();
+        List<Author> authors = authorService.getAllAuthors();
+        for (Author author : authors) {
+            List<Book> books = bookDAO.getByAuthor(author);
+            authorsBooks.put(author, books.size());
+        }
+        bookView.displayAuthorsAndTheirBooksQuantity(authorsBooks);
+    }
 }

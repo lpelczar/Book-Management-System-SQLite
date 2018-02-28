@@ -1,7 +1,11 @@
 package com.codecool.library.views;
 
+import com.codecool.library.models.Author;
 import com.codecool.library.models.Book;
 import com.codecool.library.utils.InputGetter;
+
+import java.util.Iterator;
+import java.util.Map;
 
 public class BookView extends AbstractView {
 
@@ -99,5 +103,12 @@ public class BookView extends AbstractView {
 
     public String getSearchPhrase() {
         return InputGetter.getStringInputFromConsole("Enter search phrase: ");
+    }
+
+    public void displayAuthorsAndTheirBooksQuantity(Map<Author, Integer> authorsBooks) {
+        for (Object o : authorsBooks.entrySet()) {
+            Map.Entry pair = (Map.Entry) o;
+            System.out.println(pair.getKey() + ", Books quantity: " + pair.getValue());
+        }
     }
 }

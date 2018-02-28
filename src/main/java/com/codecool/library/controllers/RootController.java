@@ -38,6 +38,8 @@ public class RootController {
                 case "6":
                     bookService.showAllBooksByGivenAuthor();
                     break;
+                case "7":
+                    bookService.showHowManyBooksEachAuthorHasCreated();
                 case "0":
                     isAppRunning = false;
                     break;

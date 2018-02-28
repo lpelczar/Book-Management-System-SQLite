@@ -14,6 +14,10 @@ public class RootView extends AbstractView {
                 " 4. Search for book\n" +
                 " 5. Show all books sorted by name ascending\n" +
                 " 6. Show all books by given author\n" +
+                " 7. Show authors and their books quantity\n" +
+                " 8. Show all books written in the last 10 years\n" +
+                " 9. Show most expensive book\n" +
+                " 10. Show author full name and age\n" +
                 " 0. Exit");
     }
 
