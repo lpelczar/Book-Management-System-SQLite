@@ -11,5 +11,5 @@ public interface BookDAO {
     List<Book> getAll();
     List<Book> getByAuthor(String author);
     List<Book> getBySearchPhrase(String searchPhrase);
-    Book getByISBN(double ISBN);
+    Book getByISBN(long ISBN);
 }
