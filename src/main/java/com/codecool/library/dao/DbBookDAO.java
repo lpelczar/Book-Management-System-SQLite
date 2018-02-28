@@ -39,13 +39,13 @@ public class DbBookDAO extends DbHelper implements BookDAO {
             ResultSet resultSet = query(statement);
             while (resultSet.next())
                 book = new Book(
-                        resultSet.getDouble(BookEntry.ISBN),
-                        resultSet.getInt(BookEntry.author),
-                        resultSet.getString(BookEntry.title),
-                        resultSet.getString(BookEntry.publisher),
-                        resultSet.getInt(BookEntry.publication_year),
-                        resultSet.getDouble(BookEntry.price),
-                        resultSet.getInt(BookEntry.type));
+                        resultSet.getDouble(BookEntry.ISBN.toString()),
+                        resultSet.getInt(BookEntry.author.toString()),
+                        resultSet.getString(BookEntry.title.toString()),
+                        resultSet.getString(BookEntry.publisher.toString()),
+                        resultSet.getInt(BookEntry.publication_year.toString()),
+                        resultSet.getDouble(BookEntry.price.toString()),
+                        resultSet.getInt(BookEntry.type.toString()));
             resultSet.close();
             statement.close();
         } catch (SQLException e) {
@@ -101,13 +101,13 @@ public class DbBookDAO extends DbHelper implements BookDAO {
             ResultSet resultSet = query(statement);
             while (resultSet.next())
                 books.add(new Book(
-                        resultSet.getDouble(BookEntry.ISBN),
-                        resultSet.getInt(BookEntry.author),
-                        resultSet.getString(BookEntry.title),
-                        resultSet.getString(BookEntry.publisher),
-                        resultSet.getInt(BookEntry.publication_year),
-                        resultSet.getDouble(BookEntry.price),
-                        resultSet.getInt(BookEntry.type)));
+                        resultSet.getDouble(BookEntry.ISBN.toString()),
+                        resultSet.getInt(BookEntry.author.toString()),
+                        resultSet.getString(BookEntry.title.toString()),
+                        resultSet.getString(BookEntry.publisher.toString()),
+                        resultSet.getInt(BookEntry.publication_year.toString()),
+                        resultSet.getDouble(BookEntry.price.toString()),
+                        resultSet.getInt(BookEntry.type.toString())));
             resultSet.close();
             statement.close();
         } catch (SQLException e) {

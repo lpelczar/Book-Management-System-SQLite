@@ -1,12 +1,23 @@
 package com.codecool.library.data.contracts;
 
-public class BookEntry {
-    public static final String TABLE_NAME = "books";
-    public static final String ISBN = "ISBN";
-    public static final String author = "author";
-    public static final String title = "title";
-    public static final String publisher = "publisher";
-    public static final String publication_year = "publication_year";
-    public static final String price = "price";
-    public static final String type = "type";
+public enum BookEntry {
+    TABLE_NAME ("books"),
+    ISBN ("ISBN"),
+    author ("author"),
+    title ("title"),
+    publisher ("publisher"),
+    publication_year ("publication_year"),
+    price ("price"),
+    type ("type");
+
+    private final String name;
+
+    BookEntry(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
