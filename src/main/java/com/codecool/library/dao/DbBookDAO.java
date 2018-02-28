@@ -5,6 +5,7 @@ import com.codecool.library.data.PreparedStatementCreator;
 import com.codecool.library.data.contracts.BookEntry;
 import com.codecool.library.data.statements.BookStatement;
 import com.codecool.library.models.Book;
+import com.codecool.library.models.Publisher;
 import com.codecool.library.utils.QueryLogger;
 
 import java.sql.PreparedStatement;
@@ -19,6 +20,11 @@ public class DbBookDAO extends DbHelper implements BookDAO {
 
     private BookStatement bookStatement = new BookStatement();
     private PreparedStatementCreator psc = new PreparedStatementCreator();
+    private AuthorDAO authorDAO;
+
+    public DbBookDAO(AuthorDAO authorDAO) {
+        this.authorDAO = authorDAO;
+    }
 
     @Override
     public boolean add(Book book) {
@@ -57,12 +63,12 @@ public class DbBookDAO extends DbHelper implements BookDAO {
             while (resultSet.next())
                 book = new Book(
                         resultSet.getDouble(BookEntry.ISBN.toString()),
-                        resultSet.getInt(BookEntry.author.toString()),
+                        authorDAO.getById(resultSet.getInt(BookEntry.author.toString())),
                         resultSet.getString(BookEntry.title.toString()),
-                        resultSet.getString(BookEntry.publisher.toString()),
+                        publisherDAO.getById(resultSet.getString(BookEntry.publisher.toString())),
                         resultSet.getInt(BookEntry.publication_year.toString()),
                         resultSet.getDouble(BookEntry.price.toString()),
-                        resultSet.getInt(BookEntry.type.toString()));
+                        bookTypeDAO.getById(resultSet.getInt(BookEntry.type.toString())));
             resultSet.close();
             statement.close();
         } catch (SQLException e) {
