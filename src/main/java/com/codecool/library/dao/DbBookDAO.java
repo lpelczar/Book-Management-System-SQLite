@@ -30,6 +30,23 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     }
 
     @Override
+    public boolean delete(Book book) {
+        String sqlStatement = bookStatement.deleteBookStatement();
+        List params = Collections.singletonList(book.getISBN());
+        PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
+        return update(statement);
+    }
+
+    @Override
+    public boolean update(Book book) {
+        String sqlStatement = bookStatement.updateBookStatement();
+        List params = Arrays.asList(book.getAuthor(), book.getTitle(), book.getPublisher(),
+                book.getPublication_year(), book.getPrice(), book.getType(), book.getISBN());
+        PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
+        return update(statement);
+    }
+
+    @Override
     public Book getByISBN(double ISBN) {
         String sqlStatement = bookStatement.selectBookByISBN();
         Book book = null;
@@ -55,23 +72,6 @@ public class DbBookDAO extends DbHelper implements BookDAO {
             closeConnection();
         }
         return book;
-    }
-
-    @Override
-    public boolean delete(Book book) {
-        String sqlStatement = bookStatement.deleteBookStatement();
-        List params = Collections.singletonList(book.getISBN());
-        PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
-        return update(statement);
-    }
-
-    @Override
-    public boolean update(Book book) {
-        String sqlStatement = bookStatement.updateBookStatement();
-        List params = Arrays.asList(book.getAuthor(), book.getTitle(), book.getPublisher(),
-                book.getPublication_year(), book.getPrice(), book.getType(), book.getISBN());
-        PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
-        return update(statement);
     }
 
     @Override
