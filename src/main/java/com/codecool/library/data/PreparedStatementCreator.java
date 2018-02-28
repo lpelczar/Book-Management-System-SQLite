@@ -30,6 +30,7 @@ public class PreparedStatementCreator extends DbHelper {
             }
         } catch (SQLException e) {
             QueryLogger.logInfo(e.getClass().getName() + ": " + e.getMessage(), "logs/errors.log");
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
         return statement;
     }
