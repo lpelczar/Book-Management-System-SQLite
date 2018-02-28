@@ -1,6 +1,6 @@
 # Book management system
 
-Simple book management console system with SQLite database, written using Java JDBC. Made for Codecool programming course.
+Simple book management console system with SQLite database, written using Java JDBC.
 
 ### User stories
 
@@ -49,4 +49,8 @@ Simple book management console system with SQLite database, written using Java J
 ### Clean code
 
 * Do not forget about basic principles (DRY etc), follow java code guidelines 
+
+### More info
+
+* Written for [Codecool](https://codecool.com/) programming course
 
