@@ -1,6 +1,9 @@
 package com.codecool.library.data.statements;
 
+import com.codecool.library.data.contracts.AuthorEntry;
 import com.codecool.library.data.contracts.BookEntry;
+import com.codecool.library.data.contracts.BookTypeEntry;
+import com.codecool.library.data.contracts.PublisherEntry;
 
 public class BookStatement {
 
@@ -32,8 +35,7 @@ public class BookStatement {
 
     public String selectBooksByAuthor() {
         return "SELECT * FROM " + BookEntry.TABLE_NAME +
-                " JOIN authors ON " +
-                BookEntry.TABLE_NAME + "." + BookEntry.author + " = authors.author_id WHERE authors.name = ?;" ;
+                " WHERE " + BookEntry.author + " = ?;" ;
     }
 
     public String updateBookStatement() {
@@ -48,14 +50,21 @@ public class BookStatement {
 
     public String selectBooksBySearchPhrase() {
         return "SELECT * FROM " + BookEntry.TABLE_NAME +
+                " JOIN " + AuthorEntry.TABLE_NAME + " ON " +
+                BookEntry.TABLE_NAME + "." + BookEntry.author + " = " +
+                AuthorEntry.TABLE_NAME + "." + AuthorEntry.author_id +
+                " JOIN " + PublisherEntry.TABLE_NAME + " ON " +
+                BookEntry.TABLE_NAME + "." + BookEntry.publisher + " = " +
+                PublisherEntry.TABLE_NAME + "." + PublisherEntry.publisher_id +
+                " JOIN " + BookTypeEntry.TABLE_NAME + " ON " +
+                BookEntry.TABLE_NAME + "." + BookEntry.type + " = " +
+                BookTypeEntry.TABLE_NAME + "." + BookTypeEntry.type_id +
                 " WHERE " +
                 BookEntry.ISBN + " LIKE ? OR " +
-                BookEntry.author + " LIKE ? OR " +
                 BookEntry.title + " LIKE ? OR " +
-                BookEntry.publisher + " LIKE ? OR " +
+                AuthorEntry.TABLE_NAME + "." + AuthorEntry.name + " LIKE ? OR " +
                 BookEntry.publication_year + " LIKE ? OR " +
-                BookEntry.price + " LIKE ? OR " +
-                BookEntry.type + " LIKE ? " +
+                PublisherEntry.TABLE_NAME + "." + PublisherEntry.name + " LIKE ? " +
                 ";" ;
     }
 }

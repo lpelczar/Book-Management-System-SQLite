@@ -53,7 +53,7 @@ public class BookService {
             return;
         }
 
-        double bookISBN = bookView.getBookISBNInput();
+        long bookISBN = bookView.getBookISBNInput();
         if (bookDAO.getByISBN(bookISBN) != null) {
             if (bookDAO.delete(bookDAO.getByISBN(bookISBN))) {
                 bookView.displayBookDeletedMessage();
@@ -66,7 +66,7 @@ public class BookService {
     }
 
     public void showAllBooksByGivenAuthor() {
-        String author = bookView.getAuthorInput();
+        Author author = authorService.getAuthor();
         bookView.displayEntries(new ArrayList<>(bookDAO.getByAuthor(author)));
     }
 
@@ -83,7 +83,7 @@ public class BookService {
             return;
         }
 
-        double bookISBN = bookView.getBookISBNInput();
+        long bookISBN = bookView.getBookISBNInput();
         if (bookDAO.getByISBN(bookISBN) != null) {
             updateBook(bookDAO.getByISBN(bookISBN));
         } else {
@@ -101,7 +101,7 @@ public class BookService {
 
         switch(bookView.getValueToUpdate(book)) {
             case UPDATE_AUTHOR:
-                int author = bookView.askForNewAuthor();
+                Author author = authorService.getAuthor();
                 book.setAuthor(author);
                 showEditResultMessage(bookDAO.update(book));
                 break;
@@ -111,7 +111,7 @@ public class BookService {
                 showEditResultMessage(bookDAO.update(book));
                 break;
             case UPDATE_PUBLISHER:
-                String publisher = bookView.askForPublisherInput();
+                Publisher publisher = publisherService.getPublisher();
                 book.setPublisher(publisher);
                 showEditResultMessage(bookDAO.update(book));
                 break;
@@ -126,8 +126,8 @@ public class BookService {
                 showEditResultMessage(bookDAO.update(book));
                 break;
             case UPDATE_TYPE:
-                int type = bookView.askForTypeInput();
-                book.setPrice(type);
+                BookType type = bookTypeService.getBookType();
+                book.setType(type);
                 showEditResultMessage(bookDAO.update(book));
                 break;
             default:

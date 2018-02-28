@@ -4,6 +4,7 @@ import com.codecool.library.data.DbHelper;
 import com.codecool.library.data.PreparedStatementCreator;
 import com.codecool.library.data.contracts.BookEntry;
 import com.codecool.library.data.statements.BookStatement;
+import com.codecool.library.models.Author;
 import com.codecool.library.models.Book;
 import com.codecool.library.models.Publisher;
 import com.codecool.library.utils.QueryLogger;
@@ -51,8 +52,9 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     @Override
     public boolean update(Book book) {
         String sqlStatement = bookStatement.updateBookStatement();
-        List params = Arrays.asList(book.getAuthor(), book.getTitle(), book.getPublisher(),
-                book.getPublication_year(), book.getPrice(), book.getType(), book.getISBN());
+        List params = Arrays.asList(book.getAuthor().getId(), book.getTitle(),
+                book.getPublisher().getPublisher_id(), book.getPublication_year(),
+                book.getPrice(), book.getType().getType_id(), book.getISBN());
         PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
         return update(statement);
     }
@@ -73,7 +75,8 @@ public class DbBookDAO extends DbHelper implements BookDAO {
                         publisherDAO.getById(resultSet.getString(BookEntry.publisher.toString())),
                         resultSet.getInt(BookEntry.publication_year.toString()),
                         resultSet.getDouble(BookEntry.price.toString()),
-                        bookTypeDAO.getById(resultSet.getInt(BookEntry.type.toString())));
+                        bookTypeDAO.getById(resultSet.getInt(BookEntry.type.toString()))
+                );
             resultSet.close();
             statement.close();
         } catch (SQLException e) {
@@ -93,9 +96,9 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     }
 
     @Override
-    public List<Book> getByAuthor(String author) {
+    public List<Book> getByAuthor(Author author) {
         String sqlStatement = bookStatement.selectBooksByAuthor();
-        List params = Collections.singletonList(author);
+        List params = Collections.singletonList(author.getId());
         PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
         return getBooks(statement);
     }
@@ -103,7 +106,7 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     @Override
     public List<Book> getBySearchPhrase(String searchPhrase) {
         String sqlStatement = bookStatement.selectBooksBySearchPhrase();
-        List params = new ArrayList<>(Collections.nCopies(7, "%" + searchPhrase + "%"));
+        List params = new ArrayList<>(Collections.nCopies(5, "%" + searchPhrase + "%"));
         PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
         return getBooks(statement);
     }
@@ -114,13 +117,14 @@ public class DbBookDAO extends DbHelper implements BookDAO {
             ResultSet resultSet = query(statement);
             while (resultSet.next())
                 books.add(new Book(
-                        resultSet.getDouble(BookEntry.ISBN.toString()),
-                        resultSet.getInt(BookEntry.author.toString()),
+                        resultSet.getLong(BookEntry.ISBN.toString()),
+                        authorDAO.getById(resultSet.getInt(BookEntry.author.toString())),
                         resultSet.getString(BookEntry.title.toString()),
-                        resultSet.getString(BookEntry.publisher.toString()),
+                        publisherDAO.getById(resultSet.getString(BookEntry.publisher.toString())),
                         resultSet.getInt(BookEntry.publication_year.toString()),
                         resultSet.getDouble(BookEntry.price.toString()),
-                        resultSet.getInt(BookEntry.type.toString())));
+                        bookTypeDAO.getById(resultSet.getInt(BookEntry.type.toString()))
+                ));
             resultSet.close();
             statement.close();
         } catch (SQLException e) {
