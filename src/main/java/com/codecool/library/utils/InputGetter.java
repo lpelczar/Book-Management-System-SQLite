@@ -2,8 +2,9 @@ package com.codecool.library.utils;
 
 import java.util.Scanner;
 
-import static com.codecool.library.utils.DoubleChecker.isDouble;
-import static com.codecool.library.utils.IntegerChecker.isInteger;
+import static com.codecool.library.utils.NumberUtil.isDouble;
+import static com.codecool.library.utils.NumberUtil.isInteger;
+import static com.codecool.library.utils.NumberUtil.isLong;
 
 public class InputGetter {
 
@@ -50,6 +51,21 @@ public class InputGetter {
             }
         }
         return Double.parseDouble(input);
+    }
+
+    public static long getLongInputFromConsole(String message) {
+
+        String input = null;
+        boolean isCorrectInput = false;
+
+        while(!isCorrectInput) {
+            System.out.print(message);
+            input = getStringInput();
+            if (input.trim().length() > 0 && isLong(input)) {
+                isCorrectInput = true;
+            }
+        }
+        return Long.parseLong(input);
     }
 
     private static String getStringInput() {
