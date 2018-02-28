@@ -23,7 +23,7 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     @Override
     public boolean add(Book book) {
         String sqlStatement = bookStatement.insertBookStatement();
-        List<Object> params = Arrays.asList(book.getISBN(), book.getAuthor(), book.getTitle(),
+        List params = Arrays.asList(book.getISBN(), book.getAuthor(), book.getTitle(),
                 book.getPublisher(), book.getPublication_year(), book.getPrice(), book.getType());
         PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
         return update(statement);
@@ -60,7 +60,7 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     @Override
     public boolean delete(Book book) {
         String sqlStatement = bookStatement.deleteBookStatement();
-        List<Object> params = Collections.singletonList(book.getISBN());
+        List params = Collections.singletonList(book.getISBN());
         PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
         return update(statement);
     }
@@ -68,7 +68,7 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     @Override
     public boolean update(Book book) {
         String sqlStatement = bookStatement.updateBookStatement();
-        List<Object> params = Arrays.asList(book.getAuthor(), book.getTitle(), book.getPublisher(),
+        List params = Arrays.asList(book.getAuthor(), book.getTitle(), book.getPublisher(),
                 book.getPublication_year(), book.getPrice(), book.getType(), book.getISBN());
         PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
         return update(statement);
@@ -84,7 +84,7 @@ public class DbBookDAO extends DbHelper implements BookDAO {
     @Override
     public List<Book> getByAuthor(String author) {
         String sqlStatement = bookStatement.selectBooksByAuthor();
-        List<Object> params = Collections.singletonList(author);
+        List params = Collections.singletonList(author);
         PreparedStatement statement = psc.getPreparedStatementBy(params, sqlStatement);
         return getBooks(statement);
     }
