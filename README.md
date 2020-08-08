@@ -37,7 +37,7 @@ Simple book management console system with SQLite database, written using Java J
 
 * During tables creation use proper data type.  
 
-![c1](https://raw.github.com/lpelczar/Book-Management-System-SQLiteg/master/diagram.png)
+![c1](https://raw.github.com/lpelczar/Book-Management-System-SQLite/master/diagram.png)
 
 ![c2](https://raw.github.com/lpelczar/Book-Management-System-SQLite/master/bookstore.png)
 
